@@ -2,7 +2,7 @@
 import "../globals.css";
 import SideBar from "@/app/_components/sidebar.component";
 
-export default function DashboardPage() {
+export default function UserPage() {
     return (
         <div className="dashboard">
             {/* Sidebar */}
@@ -12,15 +12,12 @@ export default function DashboardPage() {
             <main className="dashboard-content">
                 {/* Header */}
                 <div className="dashboard-header">
-                    <h1>Dashboard</h1>
+                    <h1>Users</h1>
                 </div>
 
-                {/* Cards */}
-                <div className="dashboard-cards">
-                    <div className="dashboard-card">
-                        <h3>Users</h3>
-                        <p>1,245</p>
-                    </div>
+                {/* List */}
+                <div>
+
                 </div>
             </main>
         </div>

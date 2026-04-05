@@ -40,14 +40,14 @@ export default function LoginPage() {
   const handleRegister = () => router.push("/register");
 
   return (
-    <div className="login-container">
-      <h3 className="login-title">Sign in to your account</h3>
+    <div className="container">
+      <h3 className="title">Sign in to your account</h3>
 
-      <form className="login-form" onSubmit={handleOnSubmit}>
+      <form className="form" onSubmit={handleOnSubmit}>
         <input
           type="email"
           placeholder="email"
-          className="login-input"
+          className="input"
           name="email"
           onChange={(e) => handleOnChange(e)}
         />
@@ -55,14 +55,14 @@ export default function LoginPage() {
         <input
           type="password"
           placeholder="password"
-          className="login-input"
+          className="input"
           name="password"
           onChange={(e) => handleOnChange(e)}
         />
 
-        <button className="login-button" type="submit">Sign in</button>
+        <button className="button" type="submit">Sign in</button>
       </form>
-      <button className="login-button" type="button" onClick={handleRegister}>Sign up</button>
+      <button className="button" type="button" onClick={handleRegister}>Sign up</button>
     </div>
   );
 }

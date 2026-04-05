@@ -45,7 +45,7 @@ export default function RegisterPage() {
             email: credentials.email,
             password: credentials.password,
         });
-        
+
         if (response?.token) {
             localStorage.setItem("token", response.token);
             router.push("/dashboard");
@@ -55,21 +55,21 @@ export default function RegisterPage() {
     }
 
     return (
-        <div className="login-container">
-            <h3 className="login-title">Sign up for an account</h3>
+        <div className="container">
+            <h3 className="title">Sign up for an account</h3>
 
-            <form className="login-form" onSubmit={handleOnSubmit}>
+            <form className="form" onSubmit={handleOnSubmit}>
                 <input
                     type="text"
                     placeholder="Full Name"
-                    className="login-input"
+                    className="input"
                     name="name"
                     onChange={(e) => handleOnChange(e)}
                 />
                 <input
                     type="email"
                     placeholder="email"
-                    className="login-input"
+                    className="input"
                     name="email"
                     onChange={(e) => handleOnChange(e)}
                 />
@@ -77,7 +77,7 @@ export default function RegisterPage() {
                 <input
                     type="password"
                     placeholder="password"
-                    className="login-input"
+                    className="input"
                     name="password"
                     onChange={(e) => handleOnChange(e)}
                 />
@@ -85,15 +85,15 @@ export default function RegisterPage() {
                 <input
                     type="password"
                     placeholder="confirm password"
-                    className="login-input"
+                    className="input"
                     name="confirmPassword"
                     onChange={(e) => handleOnChange(e)}
                 />
 
-                <button className="login-button" type="submit">Sign up</button>
+                <button className="button" type="submit">Sign up</button>
             </form>
 
-            <button className="login-button" type="button" onClick={() => router.push("/")}>
+            <button className="button" type="button" onClick={() => router.push("/")}>
                 Already have an account? Sign in
             </button>
 
