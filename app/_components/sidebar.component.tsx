@@ -1,10 +1,14 @@
+import { postRequest } from "@/lib/api.service";
 import "../globals.css";
+import { useRouter } from "next/navigation";
 
 export default function SideBar() {
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        window.location.href = "/login";
+    const router = useRouter();
+    const handleLogout = async () => {
+        await postRequest("/auth/logout");
+        router.push("/login");
     }
+
     return (
         <aside className="dashboard-sidebar">
             <h2>MyApp</h2>
