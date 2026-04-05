@@ -37,6 +37,8 @@ export default function LoginPage() {
     }
   }
 
+  const handleRegister = () => router.push("/register");
+
   return (
     <div className="login-container">
       <h3 className="login-title">Sign in to your account</h3>
@@ -60,6 +62,7 @@ export default function LoginPage() {
 
         <button className="login-button" type="submit">Sign in</button>
       </form>
+      <button className="login-button" type="button" onClick={handleRegister}>Sign up</button>
     </div>
   );
 }
