@@ -1,34 +1,40 @@
+'use client';
 import "./styles.css";
 
 export default function Dashboard() {
-  return (
-    <div className="dashboard">
-      {/* Sidebar */}
-      <aside className="dashboard-sidebar">
-        <h2>MyApp</h2>
-        <nav className="dashboard-nav">
-          <a href="#">Dashboard</a>
-          <a href="#">Users</a>
-          <a href="#">Settings</a>
-          <a href="#">Logout</a>
-        </nav>
-      </aside>
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        window.location.href = "/";
+    }
 
-      {/* Main content */}
-      <main className="dashboard-content">
-        {/* Header */}
-        <div className="dashboard-header">
-          <h1>Dashboard</h1>
-        </div>
+    return (
+        <div className="dashboard">
+            {/* Sidebar */}
+            <aside className="dashboard-sidebar">
+                <h2>MyApp</h2>
+                <nav className="dashboard-nav">
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/users">Users</a>
+                    <a href="/posts">Posts</a>
+                    <a href="#" onClick={handleLogout}>Logout</a>
+                </nav>
+            </aside>
 
-        {/* Cards */}
-        <div className="dashboard-cards">
-          <div className="dashboard-card">
-            <h3>Users</h3>
-            <p>1,245</p>
-          </div>
+            {/* Main content */}
+            <main className="dashboard-content">
+                {/* Header */}
+                <div className="dashboard-header">
+                    <h1>Dashboard</h1>
+                </div>
+
+                {/* Cards */}
+                <div className="dashboard-cards">
+                    <div className="dashboard-card">
+                        <h3>Users</h3>
+                        <p>1,245</p>
+                    </div>
+                </div>
+            </main>
         </div>
-      </main>
-    </div>
-  );
+    );
 }

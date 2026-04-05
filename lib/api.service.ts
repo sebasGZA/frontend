@@ -1,8 +1,8 @@
 'use client';
-import { AxiosResponse } from "axios";
 import api from "./api";
 
 export const getRequest = async (url: string, params = {}) => {
+
     const res = await api.get(url, { params });
     return res.data;
 };
