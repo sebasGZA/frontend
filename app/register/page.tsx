@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { postRequest } from "@/lib/api.service";
+import { showToast } from "nextjs-toast-notify";
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -31,12 +32,12 @@ export default function RegisterPage() {
             !credentials.password ||
             !credentials.confirmPassword
         ) {
-            alert("Please fill in all fields");
+            showToast.warning("Please fill in all fields");
             return;
         }
 
         if (credentials.password !== credentials.confirmPassword) {
-            alert("Passwords do not match");
+            showToast.warning("Passwords do not match");
             return;
         }
 
@@ -50,7 +51,7 @@ export default function RegisterPage() {
             localStorage.setItem("token", response.token);
             router.push("/dashboard");
         } else {
-            alert("Failed to register");
+            showToast.error("Failed to register");
         }
     }
 
@@ -93,7 +94,7 @@ export default function RegisterPage() {
                 <button className="button" type="submit">Sign up</button>
             </form>
 
-            <button className="button" type="button" onClick={() => router.push("/")}>
+            <button className="button" type="button" onClick={() => router.push("/login")}>
                 Already have an account? Sign in
             </button>
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { showToast } from "nextjs-toast-notify";
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -27,7 +28,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       const message = error.response?.data?.message || "Unauthorized";
-      alert(message);
+      showToast.error(message);
       if (typeof window !== "undefined") {
         localStorage.removeItem("token");
         window.location.href = "/login";
@@ -35,7 +36,7 @@ api.interceptors.response.use(
     }
     if (error.response?.status === 400 || error.response?.status === 404) {
       const message = error.response?.data?.message;
-      alert(message);
+      showToast.error(message);
     }
     return Promise.reject(error);
   }

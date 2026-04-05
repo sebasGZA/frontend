@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { postRequest } from "@/lib/api.service";
+import { showToast } from "nextjs-toast-notify";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function LoginPage() {
     e.preventDefault();
 
     if (!credentials.email || !credentials.password) {
-      alert("Please fill in all fields");
+      showToast.warning("Please fill in all fields");
       return;
     }
 
@@ -33,7 +34,7 @@ export default function LoginPage() {
       localStorage.setItem("token", response.token);
       router.push("/dashboard");
     } else {
-      alert("Failed to login");
+      showToast.error("Failed to login");
     }
   }
 
