@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 export default function LoginPage() {
-  
+
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -15,7 +15,7 @@ export default function LoginPage() {
     });
   }
 
-  const handleOnSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+  const handleOnSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Submitting credentials:", credentials);
     // Here you would typically send the credentials to your backend for authentication
@@ -25,23 +25,25 @@ export default function LoginPage() {
     <div className="login-container">
       <h3 className="login-title">Sign in to your account</h3>
 
-      <input
-        type="email"
-        placeholder="email"
-        className="login-input"
-        name="email"
-        onChange={handleOnChange}
-      />
+      <form className="login-form" onSubmit={handleOnSubmit}>
+        <input
+          type="email"
+          placeholder="email"
+          className="login-input"
+          name="email"
+          onChange={(e) => handleOnChange(e)}
+        />
 
-      <input
-        type="password"
-        placeholder="password"
-        className="login-input"
-        name="password"
-        onChange={handleOnChange}
-      />
+        <input
+          type="password"
+          placeholder="password"
+          className="login-input"
+          name="password"
+          onChange={(e) => handleOnChange(e)}
+        />
 
-      <button className="login-button" onSubmit={handleOnSubmit}>Sign in</button>
+        <button className="login-button" type="submit">Sign in</button>
+      </form>
     </div>
   );
 }

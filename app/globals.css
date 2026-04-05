@@ -1,27 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Root container */
 .login-container {
   display: flex;
   flex-direction: column;
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: #fafafa; /* zinc-50 */
+  background-color: #fafafa;
+
   font-family: sans-serif;
   min-height: 100vh;
 }
 
-/* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .login-container {
     background-color: black;
   }
 
-  .login-title {
-    color: white;
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .login-input {
@@ -29,19 +26,26 @@
   }
 }
 
-/* Title */
 .login-title {
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   font-weight: 600;
-  color: white; /* gray-900 */
+  color: white;
 }
 
-/* Inputs */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
 .login-input {
   width: 20rem;
   border-radius: 0.375rem;
-  border: 1px solid #d4d4d8; /* zinc-300 */
+  border: 1px solid #d4d4d8;
+
   background-color: #ffffff;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
@@ -50,18 +54,18 @@
   transition: all 0.2s ease;
 }
 
-/* Input focus */
 .login-input:focus {
   outline: none;
-  border-color: #3b82f6; /* blue-500 */
+  border-color: #3b82f6;
+
   box-shadow: 0 0 0 1px #3b82f6;
 }
 
-/* Button */
 .login-button {
   width: 20rem;
   border-radius: 0.375rem;
-  background-color: #3b82f6; /* blue-500 */
+  background-color: #3b82f6;
+
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
@@ -71,12 +75,10 @@
   transition: all 0.2s ease;
 }
 
-/* Button hover */
 .login-button:hover {
-  background-color: #2563eb; /* blue-600 */
+  background-color: #2563eb;
 }
 
-/* Button focus */
 .login-button:focus {
   outline: none;
   box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px #ffffff;
