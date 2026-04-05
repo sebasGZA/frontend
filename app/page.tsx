@@ -1,4 +1,6 @@
 'use client';
+
+import { postRequest } from "@/lib/api.service";
 import { useState } from "react";
 
 export default function LoginPage() {
@@ -15,10 +17,21 @@ export default function LoginPage() {
     });
   }
 
-  const handleOnSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleOnSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Submitting credentials:", credentials);
-    // Here you would typically send the credentials to your backend for authentication
+
+    if (!credentials.email || !credentials.password) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    const response = await postRequest("/auth/login", credentials);
+    if (response?.token) {
+      localStorage.setItem("token", response.token);
+      window.location.href = "/dashboard";
+    } else {
+      alert("Failed to login");
+    }
   }
 
   return (
