@@ -1,10 +1,12 @@
 'use client';
+import { useRouter } from "next/navigation";
 import "./styles.css";
 
-export default function Dashboard() {
+export default function DashboardPage() {
+    const router = useRouter();
     const handleLogout = () => {
         localStorage.removeItem("token");
-        window.location.href = "/";
+        router.push("/");
     }
 
     return (

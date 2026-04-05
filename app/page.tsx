@@ -1,9 +1,12 @@
 'use client';
 
-import { postRequest } from "@/lib/api.service";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { postRequest } from "@/lib/api.service";
 
 export default function LoginPage() {
+  const router = useRouter();
 
   const [credentials, setCredentials] = useState({
     email: "",
@@ -28,7 +31,7 @@ export default function LoginPage() {
     const response = await postRequest("/auth/login", credentials);
     if (response?.token) {
       localStorage.setItem("token", response.token);
-      window.location.href = "/dashboard";
+      router.push("/dashboard");
     } else {
       alert("Failed to login");
     }
