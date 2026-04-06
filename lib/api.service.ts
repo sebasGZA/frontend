@@ -1,8 +1,12 @@
-'use client';
 import api from "./api";
 
-export const getRequest = async (url: string, params = {}) => {
-    const res = await api.get(url, { params });
+export const getRequest = async (url: string, token: string, params = {}) => {
+    const res = await api.get(url, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        params
+    });
     return res.data;
 };
 

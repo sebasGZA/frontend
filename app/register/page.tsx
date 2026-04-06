@@ -47,8 +47,10 @@ export default function RegisterPage() {
             password: credentials.password,
         });
 
-        if (response?.token)
+        if (response?.token) {
             router.push("/dashboard");
+            localStorage.setItem("token", response.token);
+        }
         else showToast.error("Failed to register");
 
     }

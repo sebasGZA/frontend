@@ -32,6 +32,7 @@ export default function LoginPage() {
     const response = await postRequest("/auth/login", credentials);
     if (response?.token) {
       router.push("/dashboard");
+      localStorage.setItem("token", response.token);
     } else {
       showToast.error("Failed to login");
     }

@@ -15,10 +15,6 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       const message = error.response?.data?.message || "Unauthorized";
       showToast.error(message);
-      if (typeof window !== "undefined") {
-        localStorage.removeItem("token");
-        window.location.href = "/login";
-      }
     }
     if (error.response?.status === 400 || error.response?.status === 404) {
       const message = error.response?.data?.message;
