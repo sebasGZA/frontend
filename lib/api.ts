@@ -15,10 +15,11 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       const message = error.response?.data?.message || "Unauthorized";
       showToast.error(message);
-      if (typeof window !== "undefined") {
+      const url = error.config?.url || '';
+      if (error.response?.status === 401 && !url.includes('/auth/login')) {
         localStorage.removeItem("token");
         await api.post('/auth/logout');
-        window.location.href = "/login";
+        window.location.href = "/login";  
       }
     }
     if (error.response?.status === 400 || error.response?.status === 404) {
