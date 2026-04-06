@@ -196,3 +196,79 @@
     color: #a1a1aa;
   }
 }
+
+/* DarkTable.css */
+
+.dark-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  background-color: #1e1e2f;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+}
+
+.dark-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e0e0e0;
+}
+
+.dark-table th,
+.dark-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+.dark-table th {
+  background-color: #2a2a3d;
+  font-weight: 600;
+}
+
+.dark-table tbody tr:nth-child(even) {
+  background-color: #1e1e2f;
+}
+
+.dark-table tbody tr:nth-child(odd) {
+  background-color: #252535;
+}
+
+.dark-table tbody tr:hover {
+  background-color: #33334a;
+  transition: background-color 0.2s ease;
+}
+
+/* Optional: highlight specific boolean columns */
+.dark-table td.is-active {
+  font-weight: 500;
+  color: #3b82f6; /* blue for "Yes" */
+}
+
+@media (prefers-color-scheme: light) {
+  .dark-table-container {
+    background-color: #f9fafb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark-table th {
+    background-color: #e5e7eb;
+    color: #111827;
+  }
+
+  .dark-table td {
+    color: #111827;
+  }
+
+  .dark-table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+
+  .dark-table tbody tr:nth-child(odd) {
+    background-color: #f3f4f6;
+  }
+
+  .dark-table tbody tr:hover {
+    background-color: #d1d5db;
+  }
+}
