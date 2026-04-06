@@ -2,18 +2,28 @@
 import { useEffect, useState } from "react";
 import "../globals.css";
 import SideBar from "@/app/_components/sidebar.component";
-import { getRequest } from "@/lib/api.service";
+import { deleteRequest, getRequest } from "@/lib/api.service";
+import { showToast } from "nextjs-toast-notify";
 
 export default function PostPage() {
-    const [posts, setPosts] = useState<[]>([]);
+    const [posts, setPosts] = useState<any[]>([]);
     const [columns, setColumns] = useState<string[]>([]);
 
     const handleEditPost = (id: number) => {
         window.location.href = `/post/${id}/edit`;
     }
 
-    const handleDeletePost = (id: number) => {
-        // Implementation for deleting a post
+    const handleDeletePost = async (id: number) => {
+        if (confirm("Are you sure you want to delete this post?")) {
+            const token = localStorage.getItem("token");
+            const res = await deleteRequest(`posts/${id}`, token!);
+            if (res) {
+                showToast.success("Post deleted successfully");
+                window.location.reload();
+            } else {
+                showToast.error("Failed to delete post");
+            }
+        }
     }
 
     useEffect(() => {
