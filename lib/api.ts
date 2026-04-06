@@ -10,22 +10,19 @@ const api = axios.create({
 });
 
 api.interceptors.response.use(
-  (response) => Promise.resolve(response),
+  (response) => response,
   async (error) => {
-    if (error.response?.status === 401) {
-      const message = error.response?.data?.message || "Unauthorized";
-      showToast.error(message);
-      const url = error.config?.url || '';
-      if (error.response?.status === 401 && !url.includes('/auth/login')) {
-        localStorage.removeItem("token");
-        await api.post('/auth/logout');
-        window.location.href = "/login";  
-      }
+    const url = error.config?.url || '';
+
+    if (error.response?.status === 401 && !url.includes('/auth/login')) {
+      showToast.error(error.response?.data?.message || 'Unauthorized');
+      window.location.href = '/login';
     }
-    if (error.response?.status === 400 || error.response?.status === 404) {
-      const message = error.response?.data?.message;
-      showToast.error(message);
+
+    if ([400, 404].includes(error.response?.status)) {
+      showToast.error(error.response?.data?.message);
     }
+
     return Promise.reject(error);
   }
 );
