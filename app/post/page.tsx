@@ -13,6 +13,10 @@ export default function PostPage() {
         window.location.href = `/post/${id}/edit`;
     }
 
+    const handlePostDetail = (id: number) => {
+        window.location.href = `/post/${id}`;
+    }
+
     const handleDeletePost = async (id: number) => {
         if (confirm("Are you sure you want to delete this post?")) {
             const token = localStorage.getItem("token");
@@ -78,6 +82,7 @@ export default function PostPage() {
                         <tbody>
                             {posts.map((row: any) => (
                                 <tr
+                                    onClick={() => handlePostDetail(row.id)}
                                     key={row.id}
                                 >
                                     {columns.map((col) => (
