@@ -1,47 +1,55 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body{
+  background-color: black;
+}
 
-/* Root container */
-.login-container {
+.container {
   display: flex;
   flex-direction: column;
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: #fafafa; /* zinc-50 */
+  background-color: #fafafa;
+
   font-family: sans-serif;
   min-height: 100vh;
 }
 
-/* Dark mode support */
 @media (prefers-color-scheme: dark) {
-  .login-container {
+  .container {
     background-color: black;
   }
 
-  .login-title {
-    color: white;
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .login-input {
+  .input {
     border-color: #333333;
   }
 }
 
-/* Title */
-.login-title {
+.title {
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   font-weight: 600;
-  color: white; /* gray-900 */
+  color: white;
 }
 
-/* Inputs */
-.login-input {
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.input {
   width: 20rem;
   border-radius: 0.375rem;
-  border: 1px solid #d4d4d8; /* zinc-300 */
+  border: 1px solid #d4d4d8;
+
   background-color: #ffffff;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
@@ -50,18 +58,18 @@
   transition: all 0.2s ease;
 }
 
-/* Input focus */
-.login-input:focus {
+.input:focus {
   outline: none;
-  border-color: #3b82f6; /* blue-500 */
+  border-color: #3b82f6;
+
   box-shadow: 0 0 0 1px #3b82f6;
 }
 
-/* Button */
-.login-button {
+.button {
   width: 20rem;
   border-radius: 0.375rem;
-  background-color: #3b82f6; /* blue-500 */
+  background-color: #3b82f6;
+
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
@@ -71,13 +79,268 @@
   transition: all 0.2s ease;
 }
 
-/* Button hover */
-.login-button:hover {
-  background-color: #2563eb; /* blue-600 */
+.button:hover {
+  background-color: #2563eb;
 }
 
-/* Button focus */
-.login-button:focus {
+.button:focus {
   outline: none;
   box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px #ffffff;
+}
+
+.button-edit {
+  width: 20rem;
+  border-radius: 0.375rem;
+  background-color: #e6f63b;
+
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button-edit:hover {
+  background-color: #e6f63b;
+}
+
+.button-edit:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #e6f63b, 0 0 0 4px black;
+}
+
+.button-view-actions {
+  margin: 2px;
+  width: 5rem;
+  border-radius: 0.375rem;
+  background-color: #3b82f6;
+
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button-edit-actions {
+  margin: 2px;
+  width: 5rem;
+  border-radius: 0.375rem;
+  background-color: #e6f63b;
+
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button-delete-actions {
+  margin: 2px;
+  width: 5rem;
+  border-radius: 0.375rem;
+  background-color: #ef4444;
+
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fafafa;
+  font-family: sans-serif;
+}
+
+.dashboard-sidebar {
+  width: 240px;
+  background-color: #ffffff;
+  border-right: 1px solid #e4e4e7;
+  padding: 1rem;
+}
+
+.dashboard-sidebar h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dashboard-nav a {
+  text-decoration: none;
+  color: #18181b;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  transition: background 0.2s ease;
+}
+
+.dashboard-nav a:hover {
+  background-color: #f4f4f5;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.dashboard-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-card h3 {
+  font-size: 0.9rem;
+  color: #71717a; /* zinc-500 */
+}
+
+.dashboard-card p {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dashboard {
+    background-color: #000;
+  }
+
+  .dashboard-sidebar {
+    background-color: #111;
+    border-color: #333;
+    color: white;
+  }
+
+  .dashboard-nav a {
+    color: #e4e4e7;
+  }
+
+  .dashboard-nav a:hover {
+    background-color: #27272a;
+  }
+
+  .dashboard-content {
+    color: white;
+  }
+
+  .dashboard-card {
+    background-color: #111;
+    border-color: #333;
+  }
+
+  .dashboard-card h3 {
+    color: #a1a1aa;
+  }
+}
+
+/* DarkTable.css */
+
+.dark-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  background-color: #1e1e2f;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+}
+
+.dark-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e0e0e0;
+}
+
+.dark-table th,
+.dark-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+.dark-table th {
+  background-color: #2a2a3d;
+  font-weight: 600;
+}
+
+.dark-table tbody tr:nth-child(even) {
+  background-color: #1e1e2f;
+}
+
+.dark-table tbody tr:nth-child(odd) {
+  background-color: #252535;
+}
+
+.dark-table tbody tr:hover {
+  background-color: #33334a;
+  transition: background-color 0.2s ease;
+}
+
+/* Optional: highlight specific boolean columns */
+.dark-table td.is-active {
+  font-weight: 500;
+  color: #3b82f6; /* blue for "Yes" */
+}
+
+@media (prefers-color-scheme: light) {
+  .dark-table-container {
+    background-color: #f9fafb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark-table th {
+    background-color: #e5e7eb;
+    color: #111827;
+  }
+
+  .dark-table td {
+    color: #111827;
+  }
+
+  .dark-table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+
+  .dark-table tbody tr:nth-child(odd) {
+    background-color: #f3f4f6;
+  }
+
+  .dark-table tbody tr:hover {
+    background-color: #d1d5db;
+  }
 }
