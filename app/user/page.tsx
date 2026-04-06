@@ -8,6 +8,9 @@ import { getRequest } from "@/lib/api.service";
 export default function UserPage() {
     const [users, setUsers] = useState([]);
     const [columns, setColumns] = useState<string[]>([]);
+    const handleUserDetail = (id: number) => {
+        window.location.href = `/user/${id}`;
+    }
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -41,7 +44,7 @@ export default function UserPage() {
 
                 {/* List */}
                 <div>
-                    <DarkTable data={users} columns={columns} />
+                    <DarkTable data={users} columns={columns} handleMethod={handleUserDetail} />
                 </div>
             </main>
         </div>

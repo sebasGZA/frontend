@@ -1,18 +1,14 @@
-'use client';
-
 interface DarkTableProps<T> {
     data: T[];
     columns: string[];
+    handleMethod: (id: number) => void;
 }
 
 export default function DarkTable<T extends Record<string, any>>({
     data,
     columns,
+    handleMethod,
 }: DarkTableProps<T>) {
-    
-    const handleUserDetail = (id: number) => {
-        window.location.href = `/user/${id}`;
-    }
 
     return (
         <table className="dark-table">
@@ -30,7 +26,7 @@ export default function DarkTable<T extends Record<string, any>>({
             <tbody>
                 {data.map((row) => (
                     <tr
-                        onClick={() => handleUserDetail(row.id)}
+                        onClick={() => handleMethod(row.id)}
                         key={row.id}
                     >
                         {columns.map((col) => (
