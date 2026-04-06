@@ -7,8 +7,13 @@ import { getRequest } from "@/lib/api.service";
 export default function PostPage() {
     const [posts, setPosts] = useState<[]>([]);
     const [columns, setColumns] = useState<string[]>([]);
-    const handlePostDetail = (id: number) => {
-        window.location.href = `/post/${id}`;
+
+    const handleEditPost = (id: number) => {
+        window.location.href = `/post/${id}/edit`;
+    }
+
+    const handleDeletePost = (id: number) => {
+        // Implementation for deleting a post
     }
 
     useEffect(() => {
@@ -41,6 +46,10 @@ export default function PostPage() {
                     <h1>Posts</h1>
                 </div>
 
+                <div className="dashboard-header">
+                    <button onClick={() => window.location.href = '/post/create'}>Create</button>
+                </div>
+
                 {/* List */}
                 <div>
                     <table className="dark-table">
@@ -53,15 +62,12 @@ export default function PostPage() {
                                         {col}
                                     </th>
                                 ))}
-
                                 <th>Actions</th>
-
                             </tr>
                         </thead>
                         <tbody>
                             {posts.map((row: any) => (
                                 <tr
-                                    onClick={() => handlePostDetail(row.id)}
                                     key={row.id}
                                 >
                                     {columns.map((col) => (
@@ -70,11 +76,9 @@ export default function PostPage() {
                                         </td>
                                     ))}
                                     <td>
-                                        <button>Edit</button>
-                                        <button>Delete</button>
+                                        <button onClick={() => handleEditPost(row.id)}>Edit</button>
+                                        <button onClick={() => handleDeletePost(row.id)}>Delete</button>
                                     </td>
-
-
                                 </tr>
                             ))}
                         </tbody>

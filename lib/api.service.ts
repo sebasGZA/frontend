@@ -10,9 +10,17 @@ export const getRequest = async (url: string, token: string, params = {}) => {
     return res.data;
 };
 
-export const postRequest = async (url: string, data = {}) => {
+export const postRequest = async (
+    url: string,
+    token?: string,
+    data = {}
+) => {
     try {
-        const res = await api.post(url, data);
+        const res = await api.post(url, data, {
+            headers: {
+                Authorization: token ? `Bearer ${token}` : undefined
+            }
+        });
         return res.data;
     } catch (error) {
         console.error(error)

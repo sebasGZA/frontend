@@ -29,7 +29,7 @@ export default function LoginPage() {
       return;
     }
 
-    const response = await postRequest("/auth/login", credentials);
+    const response = await postRequest("/auth/login", undefined, credentials);
     if (response?.token) {
       router.push("/dashboard");
       localStorage.setItem("token", response.token);
