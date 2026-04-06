@@ -14,14 +14,6 @@ export default function DashboardPage() {
                 <div className="dashboard-header">
                     <h1>Dashboard</h1>
                 </div>
-
-                {/* Cards */}
-                <div className="dashboard-cards">
-                    <div className="dashboard-card">
-                        <h3>Users</h3>
-                        <p>1,245</p>
-                    </div>
-                </div>
             </main>
         </div>
     );

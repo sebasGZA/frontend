@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from "react";
-import DarkTable from "../_components/table.component";
 import "../globals.css";
 import SideBar from "@/app/_components/sidebar.component";
 import { getRequest } from "@/lib/api.service";
@@ -44,7 +43,42 @@ export default function PostPage() {
 
                 {/* List */}
                 <div>
-                    <DarkTable data={posts} columns={columns} handleMethod={handlePostDetail} />
+                    <table className="dark-table">
+                        <thead>
+                            <tr>
+                                {columns.map((col) => (
+                                    <th
+                                        key={String(col)}
+                                    >
+                                        {col}
+                                    </th>
+                                ))}
+
+                                <th>Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {posts.map((row: any) => (
+                                <tr
+                                    onClick={() => handlePostDetail(row.id)}
+                                    key={row.id}
+                                >
+                                    {columns.map((col) => (
+                                        <td key={String(col)}>
+                                            {col === 'isActive' ? (row[col] ? 'Yes' : 'No') : row[col]}
+                                        </td>
+                                    ))}
+                                    <td>
+                                        <button>Edit</button>
+                                        <button>Delete</button>
+                                    </td>
+
+
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </main>
         </div>

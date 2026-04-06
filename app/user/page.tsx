@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from "react";
-import DarkTable from "../_components/table.component";
 import "../globals.css";
 import SideBar from "@/app/_components/sidebar.component";
 import { getRequest } from "@/lib/api.service";
@@ -44,7 +43,33 @@ export default function UserPage() {
 
                 {/* List */}
                 <div>
-                    <DarkTable data={users} columns={columns} handleMethod={handleUserDetail} />
+                    <table className="dark-table">
+                        <thead>
+                            <tr>
+                                {columns.map((col) => (
+                                    <th
+                                        key={String(col)}
+                                    >
+                                        {col}
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users.map((row: any) => (
+                                <tr
+                                    onClick={() => handleUserDetail(row.id)}
+                                    key={row.id}
+                                >
+                                    {columns.map((col) => (
+                                        <td key={String(col)}>
+                                            {col === 'isActive' ? (row[col] ? 'Yes' : 'No') : row[col]}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </main>
         </div>
