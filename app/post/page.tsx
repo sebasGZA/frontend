@@ -4,13 +4,15 @@ import "../globals.css";
 import SideBar from "@/app/_components/sidebar.component";
 import { deleteRequest, getRequest } from "@/lib/api.service";
 import { showToast } from "nextjs-toast-notify";
+import { useRouter } from "next/navigation";
 
 export default function PostPage() {
+    const router = useRouter()
     const [posts, setPosts] = useState<any[]>([]);
     const [columns, setColumns] = useState<string[]>([]);
 
     const handleEditPost = (id: number) => {
-        window.location.href = `/post/${id}/edit`;
+        router.push(`/post/${id}/edit`);
     }
 
     const handlePostDetail = (id: number) => {
@@ -82,7 +84,6 @@ export default function PostPage() {
                         <tbody>
                             {posts.map((row: any) => (
                                 <tr
-                                    onClick={() => handlePostDetail(row.id)}
                                     key={row.id}
                                 >
                                     {columns.map((col) => (
@@ -91,6 +92,12 @@ export default function PostPage() {
                                         </td>
                                     ))}
                                     <td>
+                                        <button
+                                            className="button-view-actions"
+                                            onClick={() => handlePostDetail(row.id)}
+                                        >
+                                            View
+                                        </button>
                                         <button
                                             className="button-edit-actions"
                                             onClick={() => handleEditPost(row.id)}
