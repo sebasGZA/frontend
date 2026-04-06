@@ -41,7 +41,7 @@ export default function RegisterPage() {
             return;
         }
 
-        const response = await postRequest("/auth/register", {
+        const response = await postRequest("/auth/register", undefined, {
             name: credentials.name,
             email: credentials.email,
             password: credentials.password,
