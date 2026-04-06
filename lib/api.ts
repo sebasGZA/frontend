@@ -11,10 +11,15 @@ const api = axios.create({
 
 api.interceptors.response.use(
   (response) => Promise.resolve(response),
-  (error) => {
+  async (error) => {
     if (error.response?.status === 401) {
       const message = error.response?.data?.message || "Unauthorized";
       showToast.error(message);
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("token");
+        await api.post('/auth/logout');
+        window.location.href = "/login";
+      }
     }
     if (error.response?.status === 400 || error.response?.status === 404) {
       const message = error.response?.data?.message;

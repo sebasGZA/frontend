@@ -23,7 +23,14 @@ Create a .env.local file in the root directory and set the variables as .env-tem
 
 ## ▶️ Running the Project
 ```bash
-npm run run dev
+npm run dev
 ```
+
+## ▶️ Running the tests
+```bash
+npm run test:watch
+```
+
+
 
 
