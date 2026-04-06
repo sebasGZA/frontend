@@ -47,7 +47,7 @@ export default function PostPage() {
                 </div>
 
                 <div className="dashboard-header">
-                    <button onClick={() => window.location.href = '/post/create'}>Create</button>
+                    <button className="button" onClick={() => window.location.href = '/post/create'}>Create</button>
                 </div>
 
                 {/* List */}
@@ -76,8 +76,16 @@ export default function PostPage() {
                                         </td>
                                     ))}
                                     <td>
-                                        <button onClick={() => handleEditPost(row.id)}>Edit</button>
-                                        <button onClick={() => handleDeletePost(row.id)}>Delete</button>
+                                        <button
+                                            className="button-edit-actions"
+                                            onClick={() => handleEditPost(row.id)}
+                                        >
+                                            Edit
+                                        </button>
+                                        <button
+                                            className="button-delete-actions"
+                                            onClick={() => handleDeletePost(row.id)}
+                                        >Delete</button>
                                     </td>
                                 </tr>
                             ))}
