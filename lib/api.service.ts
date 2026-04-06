@@ -28,12 +28,30 @@ export const postRequest = async (
     }
 };
 
-export const putRequest = async (url: string, data = {}) => {
-    const res = await api.put(url, data);
-    return res.data;
+export const patchRequest = async (url: string, token: string, data = {}) => {
+    try {
+        const res = await api.patch(url, data, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return res.data;
+    } catch (error) {
+        console.error(error)
+        throw error;
+    };
 };
 
-export const deleteRequest = async (url: string) => {
-    const res = await api.delete(url);
-    return res.data;
+export const deleteRequest = async (url: string, token: string) => {
+    try {
+        const res = await api.delete(url, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return res.data;
+    } catch (error) {
+        console.error(error)
+        throw error;
+    }
 };
